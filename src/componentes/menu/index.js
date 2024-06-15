@@ -167,7 +167,7 @@ export function Menu() {
                     <li className=" h-12">
                         <Link
 
-                            activeClass="active"
+                            activeClass="active "
                             to="contatos"
                             spy={true}
                             smooth={true}

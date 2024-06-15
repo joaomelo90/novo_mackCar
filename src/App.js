@@ -44,9 +44,9 @@ function App() {
   </p>
 </section>
 
-<section className=" w-full h-full mt-10 bg-black opacity-80">
+<section className=" w-full h-auto mt-10 bg-black opacity-80">
 
-  <p className=" text-white text-center font-bold mb-5 text-xl p-7 lg:text-5xl">Nossos Serviços</p>
+  <p className=" text-white text-center font-bold mb-5 text-2xl p-7 lg:text-5xl">Nossos Serviços</p>
 
 <div id="servicos">
 <Carrosel />
