@@ -1,7 +1,9 @@
-import React from "react";
-import {Containder ,Item, Img, P} from "./style"
+import React, { useState, useEffect } from "react";
+import {Container ,Item, Img, P} from "./style"
 
-import Carousel from 'react-elastic-carousel'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 
 import Correia from "../../assets/correia.jpg"
@@ -17,10 +19,64 @@ import Outros from '../../assets/outros.jpg'
 
 
 function CarroselServicos() {
-    return(
-        <Containder>
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    };
 
-<Carousel itemsToShow={1}>
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, marginRight:"3rem", marginTop:"-5rem", display: isMobile ? 'none' : 'block'}}
+        onClick={onClick}
+      />
+    );
+  }
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+    
+      <div
+        className={className}
+        style={{ ...style, display: isMobile ? 'none' : 'block', left: "-20px", zIndex: 1, fontSize: "2rem", color: "black", marginLeft:"3rem", marginTop:"-5rem"}}
+        onClick={onClick}
+      />
+      
+    );
+  }
+
+
+    
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow  />,
+    prevArrow: <SamplePrevArrow />
+  
+  };
+
+
+    return(
+     
+        <Slider {...settings} >
+          
+<Container>
+
 <Item>
 <Img src={Correia} alt="correia dentada"/>
 <P>
@@ -32,7 +88,9 @@ function CarroselServicos() {
       adequadas para cada aplicação específica do veículo.
 </P>
 </Item>
+</Container>
 
+<Container>
 <Item>
 <Img src={Velas} alt="velas "/>
 <P>
@@ -41,7 +99,9 @@ function CarroselServicos() {
     
 </P>
 </Item>
+</Container>
 
+<Container>
 <Item>
 <Img src={Oleo} alt="troca de Óleo"/>
 <P>
@@ -55,7 +115,9 @@ function CarroselServicos() {
       pode ser necessário realizar a troca de óleo com mais frequência.
 </P>
 </Item>
+</Container>
 
+<Container>
 <Item>
     <Img src={Sistema} alt="sistema de aferrecimento"/>
     <P>
@@ -68,7 +130,9 @@ function CarroselServicos() {
       motor e evitar danos graves. Portanto, é importante monitorar
     </P>
     </Item>
+    </Container>
 
+    <Container>
     <Item>
     <Img src={Pivo} alt="Pivo e batente"/>
     <P>
@@ -82,7 +146,9 @@ function CarroselServicos() {
       componentes, garantindo assim um desempenho seguro e confiável do veículo.
     </P>
     </Item>
+    </Container>
 
+<Container>
     <Item>
     <Img src={Mola} alt="Suspenção e mola"/>
     <P>
@@ -96,7 +162,9 @@ function CarroselServicos() {
       garantindo assim a segurança e o desempenho adequado.
     </P>
     </Item>
+    </Container>
 
+    <Container>
     <Item>
     <Img src={Mangueira} alt="Mangueiras"/>
     <P>
@@ -107,7 +175,9 @@ function CarroselServicos() {
       veículo.
     </P>
     </Item>
+    </Container>
 
+    <Container>
     <Item>
     <Img src={Freio} alt="Freio"/>
     <P>
@@ -122,7 +192,9 @@ function CarroselServicos() {
       condições de funcionamento
     </P>
     </Item>
+    </Container>
 
+    <Container>
     <Item>
     <Img src={Motor} alt="Motor"/>
     <P>
@@ -137,7 +209,9 @@ function CarroselServicos() {
     </P>
 
     </Item>
+    </Container>
 
+    <Container>
     <Item>
     <Img src={Outros} alt="outros"/>
     <P>
@@ -146,13 +220,15 @@ function CarroselServicos() {
     </P>
 
     </Item>
+    </Container>
 
 
 
 
-</Carousel>
 
-        </Containder>
+  
+        </Slider>
+       
     )
 }
 

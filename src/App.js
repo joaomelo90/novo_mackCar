@@ -21,7 +21,7 @@ import Zap from './assets/zap.gif'
 
 function App() {
   return (
- <Containder className=" w-full h-full">
+ <Containder className=" w-full h-full overflow-x-hidden">
 <Menu/>
 <nav id="inicio" style={{backgroundImage: `url(${Motor})`}} className=" w-screen h-screen bg-cover">
 
